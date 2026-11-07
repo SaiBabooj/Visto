@@ -1,0 +1,8 @@
+routes:
+  "en->ta": "llm"
+  "ta->en": "llm"
+  "hi->ta": "llm"
+  "ta->hi": "llm"
+  "en->hi": "llm"
+  "hi->en": "llm"
+default_provider: "llm"
