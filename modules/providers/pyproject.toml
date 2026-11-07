@@ -1,0 +1,15 @@
+[project]
+name = "providers"
+version = "0.1.0"
+description = "Provider interfaces, registry, timing metrics, and mocks for Voicebridge"
+requires-python = ">=3.11"
+dependencies = [
+    "contracts",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

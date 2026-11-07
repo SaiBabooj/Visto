@@ -9,8 +9,15 @@ dependencies = []
 members = [
     "packages/contracts",
     "services/gateway",
+    "modules/providers",
     "modules/translation",
 ]
+
+[tool.uv.sources]
+contracts = { workspace = true }
+providers = { workspace = true }
+translation = { workspace = true }
+gateway = { workspace = true }
 
 [tool.ruff]
 line-length = 100
@@ -21,9 +28,4 @@ select = ["E", "F", "I"]
 
 [tool.pytest.ini_options]
 testpaths = ["packages", "services", "modules"]
-pythonpath = ["packages/contracts/src", "services/gateway/src", "modules/translation/src"]
-
-[tool.uv.sources]
-contracts = { workspace = true }
-translation = { workspace = true }
-gateway = { workspace = true }
+pythonpath = ["packages/contracts/src", "services/gateway/src", "modules/providers/src", "modules/translation/src"]
