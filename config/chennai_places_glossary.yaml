@@ -1,0 +1,73 @@
+glossary:
+  # Chennai Landmarks & Transit Hubs
+  "marina beach":
+    ta: "மெரினா கடற்கரை"
+    hi: "मरीना बीच"
+  "central station":
+    ta: "சென்ட்ரல் ரயில் நிலையம்"
+    hi: "सेंट्रल रेलवे स्टेशन"
+  "chennai central":
+    ta: "சென்னை சென்ட்ரல்"
+    hi: "चेन्नई सेंट्रल"
+  "egmore":
+    ta: "எழும்பூர்"
+    hi: "एग्मोर"
+  "airport":
+    ta: "விமான நிலையம்"
+    hi: "हवाई अड्डा"
+  "t nagar":
+    ta: "தி நகர்"
+    hi: "टी नगर"
+  "guindy":
+    ta: "கிண்டி"
+    hi: "गिंडी"
+  "besant nagar":
+    ta: "பெசன்ட் நகர்"
+    hi: "बेसन नगर"
+  "kapaleeshwarar temple":
+    ta: "கபாலீஸ்வரர் கோவில்"
+    hi: "कपालेश्वर मंदिर"
+  "mylapore":
+    ta: "மயிலாப்பூர்"
+    hi: "मयिलापुर"
+  "ad descent":
+    ta: "அடையாறு"
+    hi: "अड्यार"
+  "adyar":
+    ta: "அடையாறு"
+    hi: "अड्यार"
+  "velachery":
+    ta: "வேளச்சேரி"
+    hi: "वेलाचेरी"
+  "tambaram":
+    ta: "தாம்பரம்"
+    hi: "तांबरम"
+  "omr":
+    ta: "ஓ.எம்.ஆர்"
+    hi: "ओएमआर"
+  "ecr":
+    ta: "ஈ.சி.ஆர்"
+    hi: "ईसीआर"
+
+  # Taxi / Auto Chennai Local Terms
+  "auto":
+    ta: "ஆட்டோ"
+    hi: "ऑटो"
+  "waiting charge":
+    ta: "காத்திருப்பு கட்டணம்"
+    hi: "वेटिंग चार्ज"
+  "toll":
+    ta: "டோல்"
+    hi: "टोल"
+  "round trip":
+    ta: "ரவுண்ட் ட்ரிப்"
+    hi: "राउंड ट्रिप"
+  "outstation":
+    ta: "ஊர் பயணம்"
+    hi: "आउटस्टेशन"
+  "pickup":
+    ta: "பிக்கப்"
+    hi: "पिकअप"
+  "drop":
+    ta: "டிராப்"
+    hi: "ड्रॉप"

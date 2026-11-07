@@ -1,0 +1,18 @@
+[project]
+name = "tts-gnani"
+version = "0.1.0"
+description = "Gnani Timbre Text-to-Speech adapter for Voicebridge"
+requires-python = ">=3.11"
+dependencies = [
+    "contracts",
+    "providers",
+    "httpx>=0.27.0",
+    "pyyaml>=6.0.1",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

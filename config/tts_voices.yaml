@@ -1,0 +1,12 @@
+default_model: "timbre-v3.0"
+voices:
+  ta: "Shivani"
+  en: "Kaveri"
+  hi: "Nalini"
+  te: "Suhana"
+  kn: "Saanvi"
+  ml: "Reshma"
+  mr: "Zahira"
+  bn: "Kirra"
+  gu: "Falak"
+  pa: "Mehuli"
