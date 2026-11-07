@@ -10,12 +10,14 @@ members = [
     "packages/contracts",
     "services/gateway",
     "modules/providers",
+    "modules/stt_gnani",
     "modules/translation",
 ]
 
 [tool.uv.sources]
 contracts = { workspace = true }
 providers = { workspace = true }
+stt-gnani = { workspace = true }
 translation = { workspace = true }
 gateway = { workspace = true }
 
@@ -28,4 +30,13 @@ select = ["E", "F", "I"]
 
 [tool.pytest.ini_options]
 testpaths = ["packages", "services", "modules"]
-pythonpath = ["packages/contracts/src", "services/gateway/src", "modules/providers/src", "modules/translation/src"]
+pythonpath = [
+    "packages/contracts/src",
+    "services/gateway/src",
+    "modules/providers/src",
+    "modules/stt_gnani/src",
+    "modules/translation/src"
+]
+markers = [
+    "live: marks tests that require external live API credentials",
+]
