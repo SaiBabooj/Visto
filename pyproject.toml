@@ -1,0 +1,29 @@
+[project]
+name = "voicebridge"
+version = "0.1.0"
+description = "Voice-first translation app between travellers and local drivers in Chennai"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv.workspace]
+members = [
+    "packages/contracts",
+    "services/gateway",
+    "modules/translation",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages", "services", "modules"]
+pythonpath = ["packages/contracts/src", "services/gateway/src", "modules/translation/src"]
+
+[tool.uv.sources]
+contracts = { workspace = true }
+translation = { workspace = true }
+gateway = { workspace = true }

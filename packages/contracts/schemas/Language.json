@@ -1,0 +1,607 @@
+{
+  "properties": {
+    "code": {
+      "title": "Code",
+      "type": "string"
+    },
+    "native_name": {
+      "title": "Native Name",
+      "type": "string"
+    },
+    "english_name": {
+      "title": "English Name",
+      "type": "string"
+    },
+    "stt_supported": {
+      "default": true,
+      "title": "Stt Supported",
+      "type": "boolean"
+    },
+    "tts_supported": {
+      "default": true,
+      "title": "Tts Supported",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "code",
+    "native_name",
+    "english_name"
+  ],
+  "title": "Language",
+  "type": "object",
+  "$defs": {
+    "Agreement": {
+      "properties": {
+        "agreement_id": {
+          "title": "Agreement Id",
+          "type": "string"
+        },
+        "trip_id": {
+          "title": "Trip Id",
+          "type": "string"
+        },
+        "driver_id": {
+          "title": "Driver Id",
+          "type": "string"
+        },
+        "commitment": {
+          "$ref": "#/$defs/Commitment"
+        },
+        "confirmed_by_traveller": {
+          "title": "Confirmed By Traveller",
+          "type": "boolean"
+        },
+        "confirmed_by_driver": {
+          "title": "Confirmed By Driver",
+          "type": "boolean"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "agreement_id",
+        "trip_id",
+        "driver_id",
+        "commitment",
+        "confirmed_by_traveller",
+        "confirmed_by_driver",
+        "created_at"
+      ],
+      "title": "Agreement",
+      "type": "object"
+    },
+    "Commitment": {
+      "properties": {
+        "price": {
+          "description": "Agreed fare in INR",
+          "title": "Price",
+          "type": "number"
+        },
+        "hours": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Agreed duration if charter",
+          "title": "Hours"
+        },
+        "waiting_charge": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Waiting charge per hour",
+          "title": "Waiting Charge"
+        },
+        "inclusions": {
+          "description": "Tolls, fuel, etc.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Inclusions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "price"
+      ],
+      "title": "Commitment",
+      "type": "object"
+    },
+    "ConfirmRequest": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "summary_text": {
+          "title": "Summary Text",
+          "type": "string"
+        },
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/Entity"
+          },
+          "title": "Entities",
+          "type": "array"
+        },
+        "target_role": {
+          "enum": [
+            "traveller",
+            "driver"
+          ],
+          "title": "Target Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "summary_text",
+        "target_role"
+      ],
+      "title": "ConfirmRequest",
+      "type": "object"
+    },
+    "ConfirmResponse": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "confirmed": {
+          "title": "Confirmed",
+          "type": "boolean"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        }
+      },
+      "required": [
+        "request_id",
+        "confirmed"
+      ],
+      "title": "ConfirmResponse",
+      "type": "object"
+    },
+    "Driver": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "vehicle_number": {
+          "title": "Vehicle Number",
+          "type": "string"
+        },
+        "vehicle_type": {
+          "default": "auto",
+          "title": "Vehicle Type",
+          "type": "string"
+        },
+        "phone_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phone Number"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "vehicle_number"
+      ],
+      "title": "Driver",
+      "type": "object"
+    },
+    "Entity": {
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/EntityType"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        },
+        "span": {
+          "description": "[start_offset, end_offset] within text",
+          "items": {
+            "type": "integer"
+          },
+          "title": "Span",
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "value",
+        "span"
+      ],
+      "title": "Entity",
+      "type": "object"
+    },
+    "EntityType": {
+      "enum": [
+        "money",
+        "duration",
+        "time",
+        "place",
+        "count",
+        "vehicle_term"
+      ],
+      "title": "EntityType",
+      "type": "string"
+    },
+    "ErrorCode": {
+      "enum": [
+        "INVALID_AUDIO_FORMAT",
+        "STT_SERVICE_ERROR",
+        "TTS_SERVICE_ERROR",
+        "TRANSLATION_FAILED",
+        "CONNECTION_LOST",
+        "UNAUTHORIZED",
+        "VALIDATION_ERROR",
+        "INTERNAL_ERROR"
+      ],
+      "title": "ErrorCode",
+      "type": "string"
+    },
+    "ErrorPayload": {
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/ErrorCode"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Details"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "ErrorPayload",
+      "type": "object"
+    },
+    "Language": {
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "native_name": {
+          "title": "Native Name",
+          "type": "string"
+        },
+        "english_name": {
+          "title": "English Name",
+          "type": "string"
+        },
+        "stt_supported": {
+          "default": true,
+          "title": "Stt Supported",
+          "type": "boolean"
+        },
+        "tts_supported": {
+          "default": true,
+          "title": "Tts Supported",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "native_name",
+        "english_name"
+      ],
+      "title": "Language",
+      "type": "object"
+    },
+    "Plan": {
+      "properties": {
+        "trip_id": {
+          "title": "Trip Id",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/PlanItem"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "estimated_total_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated Total Km"
+        }
+      },
+      "required": [
+        "trip_id"
+      ],
+      "title": "Plan",
+      "type": "object"
+    },
+    "PlanItem": {
+      "properties": {
+        "step_number": {
+          "title": "Step Number",
+          "type": "integer"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "location": {
+          "title": "Location",
+          "type": "string"
+        },
+        "estimated_duration_minutes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated Duration Minutes"
+        }
+      },
+      "required": [
+        "step_number",
+        "title",
+        "location"
+      ],
+      "title": "PlanItem",
+      "type": "object"
+    },
+    "RiskLevel": {
+      "enum": [
+        "low",
+        "commitment"
+      ],
+      "title": "RiskLevel",
+      "type": "string"
+    },
+    "TranslationResult": {
+      "properties": {
+        "utterance_id": {
+          "title": "Utterance Id",
+          "type": "string"
+        },
+        "source_language": {
+          "title": "Source Language",
+          "type": "string"
+        },
+        "target_language": {
+          "title": "Target Language",
+          "type": "string"
+        },
+        "translated_text": {
+          "title": "Translated Text",
+          "type": "string"
+        },
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/Entity"
+          },
+          "title": "Entities",
+          "type": "array"
+        },
+        "risk_level": {
+          "$ref": "#/$defs/RiskLevel",
+          "default": "low"
+        }
+      },
+      "required": [
+        "utterance_id",
+        "source_language",
+        "target_language",
+        "translated_text"
+      ],
+      "title": "TranslationResult",
+      "type": "object"
+    },
+    "TripRequest": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "pickup_location": {
+          "title": "Pickup Location",
+          "type": "string"
+        },
+        "destination": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Destination"
+        },
+        "passenger_count": {
+          "default": 1,
+          "title": "Passenger Count",
+          "type": "integer"
+        },
+        "traveller_language": {
+          "default": "en",
+          "title": "Traveller Language",
+          "type": "string"
+        },
+        "driver_language": {
+          "default": "ta",
+          "title": "Driver Language",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "pickup_location"
+      ],
+      "title": "TripRequest",
+      "type": "object"
+    },
+    "Utterance": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "speaker": {
+          "enum": [
+            "traveller",
+            "driver"
+          ],
+          "title": "Speaker",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "language": {
+          "title": "Language",
+          "type": "string"
+        },
+        "is_final": {
+          "default": true,
+          "title": "Is Final",
+          "type": "boolean"
+        },
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/Entity"
+          },
+          "title": "Entities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "speaker",
+        "text",
+        "language"
+      ],
+      "title": "Utterance",
+      "type": "object"
+    },
+    "WSEventEnvelope": {
+      "properties": {
+        "event_type": {
+          "enum": [
+            "audio.start",
+            "audio.chunk",
+            "audio.end",
+            "utterance.partial",
+            "utterance.final",
+            "translation",
+            "confirm.request",
+            "confirm.response",
+            "tts.chunk",
+            "plan.update",
+            "status",
+            "error"
+          ],
+          "title": "Event Type",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Utterance"
+            },
+            {
+              "$ref": "#/$defs/TranslationResult"
+            },
+            {
+              "$ref": "#/$defs/ConfirmRequest"
+            },
+            {
+              "$ref": "#/$defs/ConfirmResponse"
+            },
+            {
+              "$ref": "#/$defs/Plan"
+            },
+            {
+              "$ref": "#/$defs/ErrorPayload"
+            },
+            {
+              "additionalProperties": true,
+              "type": "object"
+            }
+          ],
+          "title": "Payload"
+        }
+      },
+      "required": [
+        "event_type",
+        "session_id",
+        "payload"
+      ],
+      "title": "WSEventEnvelope",
+      "type": "object"
+    }
+  }
+}

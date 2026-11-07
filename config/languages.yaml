@@ -1,0 +1,16 @@
+languages:
+  - code: "ta"
+    native_name: "தமிழ்"
+    english_name: "Tamil"
+    stt_supported: true
+    tts_supported: true
+  - code: "en"
+    native_name: "English"
+    english_name: "English"
+    stt_supported: true
+    tts_supported: true
+  - code: "hi"
+    native_name: "हिन्दी"
+    english_name: "Hindi"
+    stt_supported: true
+    tts_supported: true

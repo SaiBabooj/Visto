@@ -1,0 +1,16 @@
+[project]
+name = "contracts"
+version = "0.1.0"
+description = "Domain models, schemas, and contracts for Voicebridge"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7.0",
+    "pyyaml>=6.0.1",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
