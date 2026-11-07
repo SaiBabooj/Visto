@@ -15,6 +15,7 @@ members = [
     "modules/tts_gnani",
     "modules/language",
     "modules/translation",
+    "modules/verify",
 ]
 
 [tool.uv.sources]
@@ -25,6 +26,7 @@ tts-prep = { workspace = true }
 tts-gnani = { workspace = true }
 language = { workspace = true }
 translation = { workspace = true }
+verify = { workspace = true }
 gateway = { workspace = true }
 
 [tool.ruff]
@@ -44,7 +46,8 @@ pythonpath = [
     "modules/tts_prep/src",
     "modules/tts_gnani/src",
     "modules/language/src",
-    "modules/translation/src"
+    "modules/translation/src",
+    "modules/verify/src"
 ]
 markers = [
     "live: marks tests that require external live API credentials",
