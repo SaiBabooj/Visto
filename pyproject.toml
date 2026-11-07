@@ -13,6 +13,7 @@ members = [
     "modules/stt_gnani",
     "modules/tts_prep",
     "modules/tts_gnani",
+    "modules/language",
     "modules/translation",
 ]
 
@@ -22,6 +23,7 @@ providers = { workspace = true }
 stt-gnani = { workspace = true }
 tts-prep = { workspace = true }
 tts-gnani = { workspace = true }
+language = { workspace = true }
 translation = { workspace = true }
 gateway = { workspace = true }
 
@@ -41,6 +43,7 @@ pythonpath = [
     "modules/stt_gnani/src",
     "modules/tts_prep/src",
     "modules/tts_gnani/src",
+    "modules/language/src",
     "modules/translation/src"
 ]
 markers = [
